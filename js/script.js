@@ -9,7 +9,7 @@ window.onload = () => {
     const currentIs = document.getElementById('current-time-is');
     const startCurrentTask = () => {
         const setCurrentTime = () => {
-            current.textContent = pageLoadUnix;
+            current.textContent = moment().unix();
         };
         currentTask = window.setInterval(setCurrentTime, 100);
         setCurrentTime();
