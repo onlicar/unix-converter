@@ -30,8 +30,10 @@ window.onload = () => {
     // Input: 1500000000
     const convertFromInput = document.getElementById('convert-from');
     const convertFromOutput = document.getElementById('convert-from-output');
+    const convertFromOutputTz = document.getElementById('convert-from-output-tz');
     const convertFrom = e => {
-        convertFromOutput.textContent = moment.unix(e.target.value);
+        convertFromOutput.textContent = moment.unix(e.target.value).utc().format('ddd MMM DD YYYY HH:mm:ss') + ' UTC';
+        convertFromOutputTz.textContent = moment.unix(e.target.value);
     };
     convertFromInput.addEventListener('keyup', convertFrom);
     convertFromInput.addEventListener('change', convertFrom);
@@ -56,7 +58,7 @@ window.onload = () => {
     const parseOutput = document.getElementById('parse-output');
     const parseUnixOutput = document.getElementById('parse-output-unix');
     const parse = e => {
-        const p = moment(e.target.value);
+        const p = moment(e.target.value).utc();
         parseOutput.textContent = p;
         parseUnixOutput.textContent = p.unix();
     };
